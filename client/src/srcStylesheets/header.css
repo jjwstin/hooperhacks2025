@@ -1,0 +1,47 @@
+.home-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: #fff;
+    padding: 10px 20px;
+    border-bottom: 1px solid #ddd;
+}
+
+.logo {
+    font-size: 1.5rem;
+    font-weight: bold;
+}
+
+.search-bar {
+    padding: 5px;
+    font-size: 1rem;
+}
+
+.nav-links a {
+    margin: 0 10px;
+    text-decoration: none;
+    color: black;
+}
+
+.header-right {
+    display: flex;
+    align-items: center;
+}
+
+.help-bot {
+    margin-right: 10px;
+    padding: 5px 10px;
+    cursor: pointer;
+}
+
+.profile-icon {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+}
+
+.message-icon {
+    width: 24px;
+    height: 24px;
+    margin-right: 20px;
+}

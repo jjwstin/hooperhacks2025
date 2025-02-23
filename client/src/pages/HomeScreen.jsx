@@ -1,13 +1,13 @@
 import React from 'react';
+import Header from '../components/header'; // Import the Header component
 import './HomeScreen.css'; // Optional for styling
+import NavBar from '../components/navBar'; // Import the NavBar component
 
 const HomeScreen = () => {
     return (
         <div className="home-screen">
-            <header className="home-header">
-                <h1>Pair 2 Spare</h1>
-                <p>Connecting people with unique needs to quality single items.</p>
-            </header>
+            <Header /> {/* Render the header.jsx component */}
+            <NavBar /> {/* Render the navBar.jsx component */}
 
             <main className="home-main">
                 <section className="hero">
