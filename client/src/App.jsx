@@ -6,11 +6,13 @@ import Login from './pages/Login';
 import HomeScreen from './pages/HomeScreen';
 import ChatPage from './pages/ChatPage';
 import ProductPage from './pages/ProductPage';
+import NavBar from './components/navBar';
 
 function App() {
   return (
     <Router>
       <Header />
+      <NavBar />
       <Routes>
         <Route path="/" element={<Login />} />
         <Route path="/home" element={<HomeScreen />} />
