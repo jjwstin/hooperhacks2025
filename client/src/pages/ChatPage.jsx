@@ -1,5 +1,5 @@
 // src/pages/ChatPage.jsx
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { useLocation } from 'react-router-dom';
 import {
     collection,
@@ -18,16 +18,17 @@ const ChatPage = () => {
     const [selectedConversation, setSelectedConversation] = useState(null);
     const [messages, setMessages] = useState([]);
     const [newMessage, setNewMessage] = useState('');
-    const [conversationInitialized, setConversationInitialized] = useState(false);
+
+    // This ref prevents the conversation creation logic from running more than once
+    const conversationCreationAttempted = useRef(false);
 
     const location = useLocation();
-    // Retrieve the product passed from ProductPage
     const attachedProduct = location.state?.attachedProduct || null;
 
     // Build a safe productData object
     const productData = attachedProduct
         ? {
-            itemID: attachedProduct.itemID || null,      // changed from shoeID
+            itemID: attachedProduct.itemID || null,
             name: attachedProduct.name || null,
             price: attachedProduct.price || null,
             image: attachedProduct.image || null,
@@ -58,9 +59,12 @@ const ChatPage = () => {
         return () => unsubscribe();
     }, []);
 
-    // Check or create conversation only once
+    // Check or create conversation only once using the ref
     useEffect(() => {
-        if (!productData || selectedConversation || conversationInitialized) return;
+        // If no product data or a conversation is already selected, or we've already attempted creation, exit early
+        if (!productData || selectedConversation || conversationCreationAttempted.current) {
+            return;
+        }
 
         const sellerID = productData.userSellerIDs[0] || null;
         if (!currentUserID || !sellerID) {
@@ -71,23 +75,21 @@ const ChatPage = () => {
         // Look for an existing conversation for this item between buyer and seller
         const existingConvo = conversations.find(
             (convo) =>
-                convo.product &&
-                convo.product.itemID === productData.itemID &&     // changed from shoeID
-                convo.participants &&
-                convo.participants.includes(currentUserID) &&
-                convo.participants.includes(sellerID)
+                convo.product?.itemID === productData.itemID &&
+                convo.participants?.includes(currentUserID) &&
+                convo.participants?.includes(sellerID)
         );
 
         if (existingConvo) {
             setSelectedConversation(existingConvo);
-            setConversationInitialized(true);
+            conversationCreationAttempted.current = true; // Mark creation as attempted
         } else {
             const createConversation = async () => {
                 try {
                     const conversationRef = await addDoc(collection(db, 'conversations'), {
                         title: `Chat about ${productData.name}`,
                         product: {
-                            itemID: productData.itemID,               // changed from shoeID
+                            itemID: productData.itemID,
                             name: productData.name,
                             image: productData.image,
                         },
@@ -98,26 +100,20 @@ const ChatPage = () => {
                         id: conversationRef.id,
                         title: `Chat about ${productData.name}`,
                         product: {
-                            itemID: productData.itemID,               // changed from shoeID
+                            itemID: productData.itemID,
                             name: productData.name,
                             image: productData.image,
                         },
                         participants: [currentUserID, sellerID],
                     });
-                    setConversationInitialized(true);
+                    conversationCreationAttempted.current = true; // Mark creation as attempted
                 } catch (error) {
                     console.error('Error creating conversation:', error);
                 }
             };
             createConversation();
         }
-    }, [
-        productData,
-        conversations,
-        selectedConversation,
-        currentUserID,
-        conversationInitialized,
-    ]);
+    }, [productData, conversations, selectedConversation, currentUserID]);
 
     // Load messages for the selected conversation
     useEffect(() => {
@@ -147,10 +143,10 @@ const ChatPage = () => {
                 {
                     text: newMessage,
                     createdAt: serverTimestamp(),
-                    sender: currentUserID,
+                    sender: 'user',
                     product: productData
                         ? {
-                            itemID: productData.itemID,   // changed from shoeID
+                            itemID: productData.itemID,
                             name: productData.name,
                             image: productData.image,
                         }
@@ -173,9 +169,7 @@ const ChatPage = () => {
                         <li
                             key={conv.id}
                             onClick={() => setSelectedConversation(conv)}
-                            className={
-                                selectedConversation && conv.id === selectedConversation.id ? 'active' : ''
-                            }
+                            className={selectedConversation && conv.id === selectedConversation.id ? 'active' : ''}
                         >
                             {conv.title || conv.id}
                         </li>
