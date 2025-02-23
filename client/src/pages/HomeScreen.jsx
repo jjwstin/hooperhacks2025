@@ -4,7 +4,7 @@ import NavBar from '../components/navBar'; // Import the NavBar component
 import ProductRow from '../components/productRow';
 import './HomeScreen.css'; // Optional for styling
 
-const products = [
+const productsRowOne = [
     {
         name: 'Fear of God Essentials Hoodie Light Heather Grey',
         price: 180,
@@ -16,6 +16,30 @@ const products = [
         price: 183,
         image: 'https://images.stockx.com/images/Nike-Kobe-Bryant-Baseball-Jersey-Black.jpg',
         link: '/nike-kobe-bryant-baseball-jersey-black',
+    },
+    {
+        name: 'Hunter Original Chelsea Boots Black',
+        price: 95,
+        image: 'https://images.stockx.com/images/Hunter-Original-Chelsea-Boots-Black.jpg',
+        link: '/hunter-original-chelsea-boots-black?size=10',
+    },
+    {
+        name: 'Jordan 4 Retro Net Black (Women\'s)',
+        price: 245,
+        image: 'https://images.stockx.com/images/air-jordan-4-retro-net-black-womens.jpg',
+        link: '/air-jordan-4-retro-net-black-womens',
+    },
+    {
+        name: 'Nike Air Max 97 Silver Bullet',
+        price: 170,
+        image: 'https://images.stockx.com/images/Nike-Air-Max-97-Silver-Bullet-2022.jpg',
+        link: '/nike-air-max-97-silver-bullet-2022',
+    },
+    {
+        name: 'Adidas Yeezy Boost 350 V2 Zebra',
+        price: 220,
+        image: 'https://images.stockx.com/images/adidas-Yeezy-Boost-350-V2-Zebra-2022.jpg',
+        link: '/adidas-yeezy-boost-350-v2-zebra-2022',
     },
     // Add more products as needed
 ];
@@ -43,7 +67,7 @@ const HomeScreen = () => {
                     </div>
                 </section>
 
-                <ProductRow title="Recommended For You" products={products} />
+                <ProductRow title="Recommended For You" products={productsRowOne} />
 
                 <section className="features">
                     <h3>Why Choose Us?</h3>
