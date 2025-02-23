@@ -9,6 +9,10 @@ const ProductRow = ({ title, products }) => {
         navigate(`/product/${productName}`);
     };
 
+    const truncateName = (name) => {
+        return name.length > 25 ? name.substring(0, 25) + '...' : name;
+    };
+
     return (
         <div className="product-row">
             <div className="product-row-header">
@@ -26,7 +30,7 @@ const ProductRow = ({ title, products }) => {
                             <img src={product.image} alt={product.name} />
                         </div>
                         <div className="product-details">
-                            <p className="product-title">{product.name}</p>
+                            <p className="product-title">{truncateName(product.name)}</p>
                             <p className="product-price">${product.price}</p>
                         </div>
                         <button type="button" className="favorite-button" aria-label="Follow">

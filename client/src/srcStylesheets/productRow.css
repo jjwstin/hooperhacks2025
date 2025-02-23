@@ -67,7 +67,7 @@
 }
 
 .product-title {
-    font-size: 1rem;
+    font-size: 0.9rem; /* Reduce font size */
     margin: 0;
     color: white; /* Set title color to white */
 }
@@ -75,6 +75,7 @@
 .product-price {
     font-size: 0.875rem;
     color: white; /* Set price color to white */
+    font-weight: bold; /* Bold the price */
 }
 
 h2{

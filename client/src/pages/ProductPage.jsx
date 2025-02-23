@@ -1,21 +1,13 @@
 import React from 'react';
 import { useParams } from 'react-router-dom';
-import NavBar from '../components/navBar'; // Import the NavBar component
 import '../srcStylesheets/ProductPage.css'; // Import the CSS file for styling
+import Model from '../models/productModel';
 
-const products = [
-    {
-        name: 'Hunter Original Chelsea Boots Black',
-        price: 95,
-        image: 'https://images.stockx.com/images/Hunter-Original-Chelsea-Boots-Black.jpg',
-        link: '/hunter-original-chelsea-boots-black?size=10',
-    },
-    // Add other products here if needed
-];
+const productModel = new Model();
 
 const ProductPage = () => {
     const { productName } = useParams();
-    const product = products.find(p => p.name === productName);
+    const product = productModel.getProductByName(productName);
 
     if (!product) {
         return <div>Product not found</div>;
@@ -23,7 +15,6 @@ const ProductPage = () => {
 
     return (
         <div className="product-page">
-            <NavBar /> {/* Render the navBar.jsx component */}
             <img src={product.image} alt={product.name} className="product-image" />
             <div className="product-details">
                 <h1>{product.name}</h1>
