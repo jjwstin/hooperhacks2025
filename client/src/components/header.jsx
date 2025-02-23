@@ -2,6 +2,7 @@ import React from 'react';
 import '../srcStylesheets/header.css';
 import talkIcon from '../images/talkIcon.png';
 import { useNavigate } from 'react-router-dom';
+import searchIcon from '../images/search.png'; // Import the search icon image
 
 const Header = () => {
     const navigate = useNavigate();
@@ -14,7 +15,10 @@ const Header = () => {
     return (
         <header className="home-header">
             <div className="logo">Pair 2 Spare</div>
-            <input type="text" className="search-bar" placeholder="Search..." />
+            <div className="search-container">
+                <input type="text" className="search-bar" placeholder="Search for brand, color, etc" />
+                <img src={searchIcon} alt="Search" className="search-icon" />
+            </div>
             <nav className="nav-links">
                 <a href="/news">News</a>
                 <a href="/about">About</a>

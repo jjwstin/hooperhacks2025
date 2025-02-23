@@ -2,30 +2,50 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
-    background-color: #fff;
-    padding: 10px 20px;
-    border-bottom: 1px solid #ddd;
+    padding: 10px;
+    background-color: #f8f8f8;
 }
 
 .logo {
-    font-size: 1.5rem;
+    font-size: 24px;
     font-weight: bold;
 }
 
+.search-container {
+    display: flex;
+    align-items: center;
+    flex-grow: 1;
+    margin: 0 20px;
+    position: relative;
+}
+
 .search-bar {
-    padding: 5px;
-    font-size: 1rem;
+    flex-grow: 1;
+    padding: 5px 30px 5px 5px; /* Add padding to the right for the icon */
+    font-size: 16px;
+}
+
+.search-icon {
+    width: 20px;
+    height: 20px;
+    position: absolute;
+    right: 10px; /* Position the icon inside the search bar */
+}
+
+.nav-links {
+    display: flex;
+    gap: 15px;
 }
 
 .nav-links a {
-    margin: 0 10px;
     text-decoration: none;
-    color: black;
+    color: #333;
 }
 
 .header-right {
     display: flex;
     align-items: center;
+    gap: 15px;
 }
 
 .help-bot {
@@ -35,13 +55,13 @@
 }
 
 .profile-icon {
-    width: 40px;
-    height: 40px;
+    width: 30px;
+    height: 30px;
     border-radius: 50%;
 }
 
 .message-icon {
-    width: 24px;
-    height: 24px;
+    width: 30px;
+    height: 30px;
     margin-right: 20px;
 }

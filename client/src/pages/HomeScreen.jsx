@@ -1,7 +1,24 @@
 import React from 'react';
 import Header from '../components/header'; // Import the Header component
-import './HomeScreen.css'; // Optional for styling
 import NavBar from '../components/navBar'; // Import the NavBar component
+import ProductRow from '../components/productRow';
+import './HomeScreen.css'; // Optional for styling
+
+const products = [
+    {
+        name: 'Fear of God Essentials Hoodie Light Heather Grey',
+        price: 180,
+        image: 'https://images.stockx.com/images/Fear-of-God-Essentials-Hoodie-Light-Heather-Grey.jpg',
+        link: '/fear-of-god-essentials-hoodie-light-heather-grey?size=M&xpress-ship=standard',
+    },
+    {
+        name: 'Nike Kobe Bryant Baseball Jersey Black',
+        price: 183,
+        image: 'https://images.stockx.com/images/Nike-Kobe-Bryant-Baseball-Jersey-Black.jpg',
+        link: '/nike-kobe-bryant-baseball-jersey-black',
+    },
+    // Add more products as needed
+];
 
 const HomeScreen = () => {
     return (
@@ -25,6 +42,8 @@ const HomeScreen = () => {
                         </button>
                     </div>
                 </section>
+
+                <ProductRow title="Recommended For You" products={products} />
 
                 <section className="features">
                     <h3>Why Choose Us?</h3>
