@@ -1,0 +1,60 @@
+.menu {
+    background-color: #7AACCF; 
+    width: 30vw;
+    height: 70vh;
+    padding: 20px;
+    border-radius: 10px; 
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2); 
+  }
+.menu h1 {
+    font-size: 5rem;
+    margin-top: 0px;
+    margin-bottom: 0px;
+  }
+  
+.menu p {
+font-size: 16px;
+margin-bottom: 5px;
+align-self: flex-start; 
+font-family: "Font2";
+}
+
+.menu input {
+width: calc(100% - 20px); 
+padding: 10px;
+border-radius: 5px;
+border: none;
+font-size: 1rem;
+}
+
+.signIn {
+width: 30vw;
+height: 45px;
+padding: 10px;
+background-color: #000;
+color: #fff; 
+border-radius: 5px;
+border: none;
+font-size: 1rem;
+margin-bottom: 10px;
+margin-top: 10px;
+}
+
+.signIn:hover {
+background-color: #444;
+}
+
+.menu a {
+align-self: flex-start;
+margin-top: 5px;
+text-decoration: underline;
+font-family: "Font2";
+}
+
+.menu a:hover {
+text-decoration: none;
+}
+  

@@ -1,0 +1,16 @@
+img {
+    height: 55vh;
+}
+
+.title{
+    width: fit-content;
+    font-family:'Font1';
+    margin-bottom: 120px;    
+}
+
+h1{
+    text-align: center;
+    font-family:'Font1';
+    font-size: 5rem;
+    margin-bottom: 15px;
+}
