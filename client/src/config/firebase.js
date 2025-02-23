@@ -1,18 +1,26 @@
-// src/firebase.js
-import firebase from 'firebase/app';
-import 'firebase/firestore'; // We are using Firestore for messaging
+// Import the functions you need from the SDKs you need
+import { initializeApp } from "firebase/app";
+import { getAnalytics } from "firebase/analytics";
+import { getFirestore } from "firebase/firestore"; // Import Firestore
 
+// Your web app's Firebase configuration
 const firebaseConfig = {
-  apiKey: "YOUR_API_KEY",
-  authDomain: "YOUR_AUTH_DOMAIN",
-  projectId: "YOUR_PROJECT_ID",
-  storageBucket: "YOUR_STORAGE_BUCKET",
-  messagingSenderId: "YOUR_MESSAGING_SENDER_ID",
-  appId: "YOUR_APP_ID"
+    apiKey: "AIzaSyCyxw6OOpu0RynsnywT2YGvzrCPvSMuN0A",
+    authDomain: "hooperhacks2025.firebaseapp.com",
+    projectId: "hooperhacks2025",
+    storageBucket: "hooperhacks2025.firebasestorage.app",
+    messagingSenderId: "886577083535",
+    appId: "1:886577083535:web:6d555e26db78e404d7acfa",
+    measurementId: "G-PTQYJV7KJE"
 };
 
-firebase.initializeApp(firebaseConfig);
+// Initialize Firebase
+const app = initializeApp(firebaseConfig);
 
-const db = firebase.firestore();
+// Initialize Analytics (if needed)
+const analytics = getAnalytics(app);
 
-export { db, firebase };
+// Initialize Firestore
+const db = getFirestore(app);
+
+export { app, analytics, db };
