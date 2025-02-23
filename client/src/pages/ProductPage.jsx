@@ -22,7 +22,6 @@ const ProductPage = () => {
     }
 
     return (
-        
         <div className="product-page">
             <NavBar /> {/* Render the navBar.jsx component */}
             <img src={product.image} alt={product.name} className="product-image" />
