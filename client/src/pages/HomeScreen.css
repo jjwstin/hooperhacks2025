@@ -1,8 +1,9 @@
 .home-screen {
     font-family: Arial, sans-serif;
-    color: #333;
+    color: #333333;
     margin: 0;
     padding: 0;
+    background-color: black; /* Set background to black */
 }
 
 .home-header {
@@ -14,22 +15,32 @@
 .hero {
     display: flex;
     align-items: center;
-    padding: 40px;
-    background: #e9ecef;
+    padding: 10px 0; /* Match padding with product row */
+    background: #000000;
+    justify-content: center; /* Center-align hero section */
+    text-align: center; /* Center-align text */
+    margin: 0 auto; /* Add margin from the left and right */
 }
 
 .hero-image {
-    max-width: 50%;
+    max-width: 25%; /* Reduce max-width */
     height: auto;
     margin-right: 20px;
+    border-radius: 10px; /* Add rounded corners to match product images */
+}
+
+.hero-text {
+    max-width: 50%;
 }
 
 .hero-text h2 {
     margin: 0 0 10px;
+    color: white; /* Set text color to white */
 }
 
 .hero-text p {
     margin: 0 0 20px;
+    color: white; /* Set text color to white */
 }
 
 .features {
@@ -48,7 +59,8 @@
 }
 
 .home-footer {
+    color:white;
     text-align: center;
     padding: 20px;
-    background-color: #f8f9fa;
+    background-color: #333333;
 }
