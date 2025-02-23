@@ -1,7 +1,11 @@
-
 .nav-bar {
-    background-color: grey;
-    padding: 10px;
+    border-top: 1px solid #444;
+    background-color: #272727;
+    padding: 10px 20%;
+    position: fixed;
+    top: 80px; /* Adjust this value based on the height of the header */
+    width: 60%;
+    z-index: 1000; /* Ensure it stays above other content */
 }
 
 .nav-list {

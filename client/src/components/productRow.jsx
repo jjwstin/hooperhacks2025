@@ -10,18 +10,14 @@ const ProductRow = ({ title, products }) => {
     };
 
     const truncateName = (name) => {
-        return name.length > 25 ? name.substring(0, 25) + '...' : name;
+        return name.length > 20 ? name.substring(0, 20) + '...' : name;
     };
 
     return (
         <div className="product-row">
             <div className="product-row-header">
                 <h2>{title}</h2>
-                <button type="button" className="popover-trigger" aria-label={title}>
-                    <svg className="icon" viewBox="0 0 50 50" aria-hidden="true">
-                        <path d="M25 6C14.5 6 6 14.5 6 25C6 35.5 14.5 44 25 44C35.5 44 44 35.5 44 25C44 14.5 35.5 6 25 6ZM26.4 36.2H22V31.7H26.4V36.2ZM29 25C27 26.1 26.2 26.8 26.2 29V29.2H22.1V28.9C22.1 25.9 23.2 24.6 25.3 23.4C27.2 22.3 28.5 21.3 28.5 19.7C28.5 18.1 26.9 17.1 25.3 17.1C23.1 17.1 21.4 18.3 21.3 21.2H17.2C17.2 16.8 20.7 14 25.3 14C29 14 32.6 15.7 32.6 19.5C32.7 22.3 30.7 24 29 25Z" fill="currentColor"></path>
-                    </svg>
-                </button>
+            
             </div>
             <ul className="product-list">
                 {products.map((product, index) => (
@@ -31,6 +27,7 @@ const ProductRow = ({ title, products }) => {
                         </div>
                         <div className="product-details">
                             <p className="product-title">{truncateName(product.name)}</p>
+                            <p className="product-lowestAsk">Lowest Ask</p>
                             <p className="product-price">${product.price}</p>
                         </div>
                         <button type="button" className="favorite-button" aria-label="Follow">

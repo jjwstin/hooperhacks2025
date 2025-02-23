@@ -2,13 +2,19 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding: 10px;
-    background-color: #f8f8f8;
+    padding: 10px 2%;
+    background-color: #000000;
+    position: fixed;
+    top: 0;
+    width: 96%;
+    z-index: 1001; /* Ensure it stays above the nav bar */
 }
 
 .logo {
     font-size: 24px;
     font-weight: bold;
+    color: white;
+    cursor: pointer;
 }
 
 .search-container {
@@ -17,12 +23,20 @@
     flex-grow: 1;
     margin: 0 20px;
     position: relative;
+    color: white;
+}
+
+.search-bar::placeholder {
+    color: #ffffff; /* Change this to your desired color */
+    opacity: 1; /* Ensure the color is fully opaque */
 }
 
 .search-bar {
     flex-grow: 1;
     padding: 5px 30px 5px 5px; /* Add padding to the right for the icon */
     font-size: 16px;
+    background-color:#272727;
+    color: white;
 }
 
 .search-icon {
@@ -39,7 +53,7 @@
 
 .nav-links a {
     text-decoration: none;
-    color: #333;
+    color: #ffffff;
 }
 
 .header-right {
@@ -55,13 +69,16 @@
 }
 
 .profile-icon {
-    width: 30px;
-    height: 30px;
+    width: 45px;
+    height: 45px;
     border-radius: 50%;
+    cursor: pointer;
 }
 
 .message-icon {
-    width: 30px;
-    height: 30px;
+    width: 65px;
+    height: 65px;
     margin: 0 20px;
+    padding: 0;
+    cursor: pointer;
 }

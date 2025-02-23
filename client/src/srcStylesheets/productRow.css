@@ -1,6 +1,6 @@
 .product-row {
     margin: 20px 0;
-    text-align: center;
+    text-align: left;
 }
 
 .product-row-header {
@@ -41,15 +41,20 @@
 .product-item {
     flex: 0 0 auto;
     width: 140px;
-    text-align: center;
+    text-align: left;
     position: relative;
     margin: 0 10px; /* Add margin from the left and right */
 }
 
 .product-image img {
-    width: 100%;
-    height: auto;
-    border-radius: 10px; /* Add rounded corners to images */
+    width: 140px;
+    height: 75px;
+    object-fit: cover;
+    background-color: white;
+    padding: 10px;
+    border: 1px solid #ddd;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
 }
 
 .favorite-button {
@@ -57,8 +62,8 @@
     border: none;
     cursor: pointer;
     position: absolute;
-    top: 10px;
-    right: 10px; /* Position the heart on the shoe images */
+    top: 5px;
+    right: -15px; /* Position the heart on the shoe images */
 }
 
 .product-details {
@@ -70,12 +75,25 @@
     font-size: 0.9rem; /* Reduce font size */
     margin: 0;
     color: white; /* Set title color to white */
+    cursor: pointer;
+    text-align: left;
+}
+
+.product-lowestAsk{
+    font-size: 0.7rem; /* Reduce font size */
+    margin: 0;
+    color: rgb(212, 212, 212); /* Set title color to white */
+    cursor: pointer;
+    text-align: left;
 }
 
 .product-price {
-    font-size: 0.875rem;
+    font-size: 1.2rem;
+    margin: 10px 0;
     color: white; /* Set price color to white */
     font-weight: bold; /* Bold the price */
+    cursor: pointer;
+    text-align: left;
 }
 
 h2{

@@ -3,7 +3,7 @@ export default class Model {
         this.data = {
             products: [
                 {
-                    shoeID: 's1',
+                    itemID: 'i1',
                     name: 'Hunter Original Chelsea Boots Black',
                     price: 95,
                     image: 'https://images.stockx.com/images/Hunter-Original-Chelsea-Boots-Black.jpg',
@@ -12,7 +12,7 @@ export default class Model {
                     userSellerIDs: ['u1'],
                 },
                 {
-                    shoeID: 's2',
+                    itemID: 'i2',
                     name: 'Jordan 4 Retro Net Black (Women\'s)',
                     price: 245,
                     image: 'https://images.stockx.com/images/air-jordan-4-retro-net-black-womens.jpg',
@@ -21,7 +21,7 @@ export default class Model {
                     userSellerIDs: ['u2'],
                 },
                 {
-                    shoeID: 's3',
+                    itemID: 'i3',
                     name: 'Nike Kobe 6 Protro Sail All-Star',
                     price: 200,
                     image: 'https://images.stockx.com/images/Nike-Kobe-6-Protro-Sail-Product.jpg',
@@ -30,7 +30,7 @@ export default class Model {
                     userSellerIDs: ['u3'],
                 },
                 {
-                    shoeID: 's4',
+                    itemID: 'i4',
                     name: 'Jordan 1 Retro High OG Black Toe Reimagined',
                     price: 300,
                     image: 'https://images.stockx.com/images/Air-Jordan-1-Retro-High-OG-Black-Toe-Reimagined-Product.jpg',
@@ -39,7 +39,7 @@ export default class Model {
                     userSellerIDs: ['u4'],
                 },
                 {
-                    shoeID: 's5',
+                    itemID: 'i5',
                     name: 'Jordan 1 Low OG Obsidian UNC',
                     price: 900,
                     image: 'https://images.stockx.com/images/Air-Jordan-1-Low-OG-Obsidian-UNC.jpg',
@@ -48,7 +48,7 @@ export default class Model {
                     userSellerIDs: ['u1'],
                 },
                 {
-                    shoeID: 's6',
+                    itemID: 'i6',
                     name: 'On Running Cloudzone Kith White Ice',
                     price: 198,
                     image: 'https://images.stockx.com/images/On-Running-Cloudzone-Kith-White.jpg',
@@ -57,7 +57,7 @@ export default class Model {
                     userSellerIDs: ['u2'],
                 },
                 {
-                    shoeID: 's7',
+                    itemID: 'i7',
                     name: 'On Running Cloudzone Kith Black',
                     price: 209,
                     image: 'https://images.stockx.com/images/On-Running-Cloudzone-Kith-Black.jpg',
@@ -66,7 +66,7 @@ export default class Model {
                     userSellerIDs: ['u3'],
                 },
                 {
-                    shoeID: 's8',
+                    itemID: 'i8',
                     name: 'adidas Yeezy Boost 700 MNVN Blue Tint',
                     price: 220,
                     image: 'https://images.stockx.com/images/adidas-Yeezy-Boost-700-MNVN-Blue-Tint-Product.jpg',
@@ -75,7 +75,7 @@ export default class Model {
                     userSellerIDs: ['u4'],
                 },
                 {
-                    shoeID: 's9',
+                    itemID: 'i9',
                     name: 'Jordan 5 Retro OG Black Metallic Reimagined (GS)',
                     price: 149,
                     image: 'https://images.stockx.com/images/Air-Jordan-5-Retro-OG-Black-Metallic-Reimagined-GS-Product.jpg',
@@ -84,7 +84,7 @@ export default class Model {
                     userSellerIDs: ['u1'],
                 },
                 {
-                    shoeID: 's10',
+                    itemID: 'i10',
                     name: 'adidas Yeezy Slide Dark Onyx',
                     price: 102,
                     image: 'https://images.stockx.com/images/adidas-Yeezy-Slide-Dark-Onyx-Product.jpg',
@@ -93,7 +93,7 @@ export default class Model {
                     userSellerIDs: ['u2'],
                 },
                 {
-                    shoeID: 's11',
+                    itemID: 'i11',
                     name: 'UGG Tasman Slipper Chestnut (Women\'s)',
                     price: 82,
                     image: 'https://images.stockx.com/images/UGG-Tasman-Slipper-Chestnut-W-Product.jpg',
@@ -102,7 +102,7 @@ export default class Model {
                     userSellerIDs: ['u3'],
                 },
                 {
-                    shoeID: 's12',
+                    itemID: 'i12',
                     name: 'adidas Yeezy Foam RNR Onyx',
                     price: 77,
                     image: 'https://images.stockx.com/images/adidas-Yeezy-Foam-RNNR-Onyx-Product.jpg',
@@ -111,7 +111,7 @@ export default class Model {
                     userSellerIDs: ['u4'],
                 },
                 {
-                    shoeID: 's13',
+                    itemID: 'i13',
                     name: 'Nike Kobe 6 Sail All-Star (GS)',
                     price: 124,
                     image: 'https://images.stockx.com/images/Nike-Kobe-6-Sail-All-Star-GS-Product.jpg',
@@ -120,7 +120,7 @@ export default class Model {
                     userSellerIDs: ['u1'],
                 },
                 {
-                    shoeID: 's14',
+                    itemID: 'i14',
                     name: 'Timberland 6" Premium Waterproof Boot Wheat',
                     price: 124,
                     image: 'https://images.stockx.com/images/Timberland-6-Inch-Premium-Waterproof-Wheat-Product.jpg',
@@ -129,7 +129,7 @@ export default class Model {
                     userSellerIDs: ['u2'],
                 },
                 {
-                    shoeID: 's15',
+                    itemID: 'i15',
                     name: 'Nike Air Max 270 Triple Black (PS)',
                     price: 100,
                     image: 'https://images.stockx.com/images/Nike-Air-Max-270-Triple-Black-PS.jpg',
@@ -138,13 +138,58 @@ export default class Model {
                     userSellerIDs: ['u3'],
                 },
                 {
-                    shoeID: 's16',
+                    itemID: 'i16',
                     name: 'Nike Dunk Low Retro White Black Panda (GS)',
                     price: 54,
                     image: 'https://images.stockx.com/images/Nike-Dunk-Low-Retro-White-Black-GS-Product.jpg',
                     link: '/nike-dunk-low-retro-white-black-gs',
                     colorTagIDs: ['t1', 't2'],
                     userSellerIDs: ['u4'],
+                },
+                {
+                    itemID: 'i17',
+                    name: 'Supreme WINDSTOPPER Zip Gloves Black',
+                    price: 120,
+                    image: 'https://images.stockx.com/images/Supreme-WINDSTOPPER-Zip-Gloves-Black.jpg',
+                    link: '/supreme-windstopper-zip-gloves-black',
+                    colorTagIDs: ['t1'],
+                    userSellerIDs: ['u1'],
+                },
+                {
+                    itemID: 'i18',
+                    name: 'Kith x BMW Leather Driving Glove Black',
+                    price: 150,
+                    image: 'https://images.stockx.com/images/Kith-x-BMW-Leather-Driving-Glove-Black.jpg',
+                    link: '/kith-bmw-leather-driving-glove-black',
+                    colorTagIDs: ['t1'],
+                    userSellerIDs: ['u2'],
+                },
+                {
+                    itemID: 'i19',
+                    name: 'Drive Medical Blue Streak Wheelchair',
+                    price: 150,
+                    image: 'https://homepromedical.com/wp-content/uploads/2022/07/bls18fbdsf-600x600.jpg',
+                    link: '/drive-medical-blue-streak-wheelchair',
+                    colorTagIDs: ['t4'],
+                    userSellerIDs: ['u3'],
+                },
+                {
+                    itemID: 'i20',
+                    name: 'Medline Aluminum Forearm Crutches',
+                    price: 45,
+                    image: 'https://athome.medline.com/media/catalog/product/cache/629a5912a555bf7b815eea5423d5ef47/m/d/mds805162_01.jpg',
+                    link: '/medline-aluminum-forearm-crutches',
+                    colorTagIDs: ['t2'],
+                    userSellerIDs: ['u4'],
+                },
+                {
+                    itemID: 'i21',
+                    name: 'NOVA Medical Products Heavy Duty Walker',
+                    price: 120,
+                    image: 'https://m.media-amazon.com/images/I/71EAnoqZsbL.jpg',
+                    link: '/nova-medical-products-heavy-duty-walker',
+                    colorTagIDs: ['t1'],
+                    userSellerIDs: ['u1'],
                 },
             ],
             colorTags: [

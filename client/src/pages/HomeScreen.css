@@ -1,21 +1,15 @@
 .home-screen {
     font-family: Arial, sans-serif;
-    color: #333333;
+    color: #ffffff;
     margin: 0;
-    padding: 0;
+    padding: 120px 0 0 0; /* Add top padding to avoid overlap with header and nav bar */
     background-color: black; /* Set background to black */
-}
-
-.home-header {
-    background-color: #f8f9fa;
-    text-align: center;
-    padding: 20px;
 }
 
 .hero {
     display: flex;
     align-items: center;
-    padding: 10px 0; /* Match padding with product row */
+    padding: 25px 0; /* Match padding with product row */
     background: #000000;
     justify-content: center; /* Center-align hero section */
     text-align: center; /* Center-align text */
@@ -58,9 +52,117 @@
     max-width: 30%;
 }
 
+.additional-links {
+    margin-top: 20px;
+}
+
+.additional-links h4 {
+    margin-bottom: 10px;
+    color: white; /* Set text color to white */
+}
+
+.additional-links ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+.additional-links li {
+    margin-bottom: 5px;
+}
+
+.additional-links a {
+    color: #1e90ff; /* Set link color */
+    text-decoration: none;
+}
+
+.additional-links a:hover {
+    text-decoration: underline;
+}
+
 .home-footer {
-    color:white;
-    text-align: center;
-    padding: 20px;
+    color: white;
+    text-align: left; /* Align text to the left */
+    padding: 30px; /* Add padding to the overall home-footer */
     background-color: #333333;
+}
+
+.footer-links {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    padding: 20px 0;
+
+}
+
+.footer-column {
+    max-width: 200px;
+    margin-bottom: 20px;
+}
+
+.footer-column h4 {
+    margin-bottom: 10px;
+    color: white; /* Set text color to white */
+}
+
+.footer-column ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+.footer-column li {
+    margin-bottom: 5px;
+    font-size: small;
+}
+
+.footer-column a {
+    color: white; /* Set link color to white */
+    text-decoration: none;
+}
+
+.footer-column a:hover {
+    text-decoration: underline;
+}
+
+.footer-bottom {
+    border-top: 1px solid #444;
+    padding-top: 10px;
+    margin-top: 20px;
+    text-align: center;
+}
+
+.footer-terms {
+    list-style-type: none;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    margin-bottom: 10px;
+}
+
+.footer-terms li {
+    margin: 0 10px;
+}
+
+.footer-terms a {
+    color: white; /* Set link color to white */
+    text-decoration: none;
+}
+
+.footer-terms a:hover {
+    text-decoration: underline;
+}
+
+.footer-languages {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.footer-languages a {
+    margin: 0 5px;
+    color: white; /* Set link color to white */
+    text-decoration: none;
+}
+
+.footer-languages a:hover {
+    text-decoration: underline;
 }
