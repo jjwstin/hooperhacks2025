@@ -3,88 +3,121 @@ import React, { useState, useEffect } from 'react';
 import { useLocation } from 'react-router-dom';
 import {
     collection,
+    addDoc,
+    onSnapshot,
     query,
     orderBy,
-    onSnapshot,
-    addDoc,
-    serverTimestamp
+    serverTimestamp,
 } from 'firebase/firestore';
-import { db } from '../config/firebase'; // Adjust the path as needed
-import './ChatPage.css'; // Page-specific styles
-import ChatBox from '../components/ChatBox'; // We'll create this next
+import { db } from '../config/firebase';
+import ChatBox from '../components/ChatBox';
+import './ChatPage.css';
 
 const ChatPage = () => {
-    // State for conversations and the selected conversation
     const [conversations, setConversations] = useState([]);
     const [selectedConversation, setSelectedConversation] = useState(null);
-    // Messages for the selected conversation
     const [messages, setMessages] = useState([]);
-    // New message input text
     const [newMessage, setNewMessage] = useState('');
+    const [conversationInitialized, setConversationInitialized] = useState(false);
 
     const location = useLocation();
-    // console.log(location.state)
-    // Check if an attached product was passed via state from the ProductPage
+    // Retrieve the product passed from ProductPage
     const attachedProduct = location.state?.attachedProduct || null;
-    console.log('Attached Product:', attachedProduct);
 
-
-    // Pre-populate message input if a product is attached
-    useEffect(() => {
-        if (attachedProduct) {
-            setNewMessage(`I'm interested in your product: ${attachedProduct.name}`);
+    // Build a safe productData object
+    const productData = attachedProduct
+        ? {
+            itemID: attachedProduct.itemID || null,      // changed from shoeID
+            name: attachedProduct.name || null,
+            price: attachedProduct.price || null,
+            image: attachedProduct.image || null,
+            userSellerIDs: attachedProduct.userSellerIDs || [],
         }
-    }, [attachedProduct]);
+        : null;
 
-    // Fetch all conversations (optionally, filter by current user)
+    // Current user (buyer) is 'u0' for this example
+    const currentUserID = 'u0';
+
+    // Pre-populate the message input if a product is attached
+    useEffect(() => {
+        if (productData) {
+            setNewMessage(`I'm interested in your product: ${productData.name}`);
+        }
+    }, [productData]);
+
+    // Fetch conversations from Firestore
     useEffect(() => {
         const conversationsRef = collection(db, 'conversations');
         const unsubscribe = onSnapshot(conversationsRef, (snapshot) => {
             const convos = snapshot.docs.map((doc) => ({
                 id: doc.id,
-                ...doc.data()
+                ...doc.data(),
             }));
             setConversations(convos);
         });
         return () => unsubscribe();
     }, []);
 
-    // If an attached product is provided and no conversation is selected,
-    // check if a conversation for that product already exists; if not, create one.
+    // Check or create conversation only once
     useEffect(() => {
-        if (attachedProduct && !selectedConversation) {
-            const existingConvo = conversations.find(
-                (convo) => convo.product && convo.product.id === attachedProduct.id
-            );
-            if (existingConvo) {
-                setSelectedConversation(existingConvo);
-            } else {
-                const createConversation = async () => {
-                    try {
-                        const conversationRef = await addDoc(collection(db, 'conversations'), {
-                            title: `Chat about ${attachedProduct.name}`,
-                            product: {
-                                id: attachedProduct.id,
-                                name: attachedProduct.name,
-                                image: attachedProduct.image
-                            },
-                            createdAt: serverTimestamp(),
-                            // In a real app, include buyer and seller IDs
-                            participants: ['Anonymous', 'Seller'] // Placeholder values
-                        });
-                        setSelectedConversation({
-                            id: conversationRef.id,
-                            title: `Chat about ${attachedProduct.name}`,
-                            product: attachedProduct
-                        });
-                    } catch (error) {
-                        console.error('Error creating conversation:', error);
-                    }
-                };
-                createConversation();
-            }
+        if (!productData || selectedConversation || conversationInitialized) return;
+
+        const sellerID = productData.userSellerIDs[0] || null;
+        if (!currentUserID || !sellerID) {
+            console.error('Missing buyer or seller ID');
+            return;
         }
-    }, [attachedProduct, conversations, selectedConversation]);
+
+        // Look for an existing conversation for this item between buyer and seller
+        const existingConvo = conversations.find(
+            (convo) =>
+                convo.product &&
+                convo.product.itemID === productData.itemID &&     // changed from shoeID
+                convo.participants &&
+                convo.participants.includes(currentUserID) &&
+                convo.participants.includes(sellerID)
+        );
+
+        if (existingConvo) {
+            setSelectedConversation(existingConvo);
+            setConversationInitialized(true);
+        } else {
+            const createConversation = async () => {
+                try {
+                    const conversationRef = await addDoc(collection(db, 'conversations'), {
+                        title: `Chat about ${productData.name}`,
+                        product: {
+                            itemID: productData.itemID,               // changed from shoeID
+                            name: productData.name,
+                            image: productData.image,
+                        },
+                        createdAt: serverTimestamp(),
+                        participants: [currentUserID, sellerID],
+                    });
+                    setSelectedConversation({
+                        id: conversationRef.id,
+                        title: `Chat about ${productData.name}`,
+                        product: {
+                            itemID: productData.itemID,               // changed from shoeID
+                            name: productData.name,
+                            image: productData.image,
+                        },
+                        participants: [currentUserID, sellerID],
+                    });
+                    setConversationInitialized(true);
+                } catch (error) {
+                    console.error('Error creating conversation:', error);
+                }
+            };
+            createConversation();
+        }
+    }, [
+        productData,
+        conversations,
+        selectedConversation,
+        currentUserID,
+        conversationInitialized,
+    ]);
 
     // Load messages for the selected conversation
     useEffect(() => {
@@ -97,38 +130,31 @@ const ChatPage = () => {
         const unsubscribe = onSnapshot(q, (snapshot) => {
             const msgs = snapshot.docs.map((doc) => ({
                 id: doc.id,
-                ...doc.data()
+                ...doc.data(),
             }));
             setMessages(msgs);
         });
         return () => unsubscribe();
     }, [selectedConversation]);
 
-    // Handle selecting a conversation from the sidebar
-    const handleSelectConversation = (conversation) => {
-        setSelectedConversation(conversation);
-    };
-
     // Handle sending a message
     const handleSendMessage = async (e) => {
         e.preventDefault();
         if (!newMessage.trim() || !selectedConversation) return;
-
         try {
             await addDoc(
                 collection(db, 'conversations', selectedConversation.id, 'messages'),
                 {
                     text: newMessage,
                     createdAt: serverTimestamp(),
-                    sender: 'Anonymous', // Replace with authenticated user info when available
-                    // Optionally attach product details if relevant
-                    product: attachedProduct
+                    sender: currentUserID,
+                    product: productData
                         ? {
-                            id: attachedProduct.id,
-                            name: attachedProduct.name,
-                            image: attachedProduct.image
+                            itemID: productData.itemID,   // changed from shoeID
+                            name: productData.name,
+                            image: productData.image,
                         }
-                        : null
+                        : null,
                 }
             );
             setNewMessage('');
@@ -139,15 +165,17 @@ const ChatPage = () => {
 
     return (
         <div className="chatpage-container">
-            {/* LEFT SIDEBAR: Conversation List */}
+            {/* LEFT SIDEBAR */}
             <div className="chatpage-sidebar">
                 <h2>Conversations</h2>
                 <ul>
                     {conversations.map((conv) => (
                         <li
                             key={conv.id}
-                            onClick={() => handleSelectConversation(conv)}
-                            className={selectedConversation && conv.id === selectedConversation.id ? 'active' : ''}
+                            onClick={() => setSelectedConversation(conv)}
+                            className={
+                                selectedConversation && conv.id === selectedConversation.id ? 'active' : ''
+                            }
                         >
                             {conv.title || conv.id}
                         </li>
@@ -155,7 +183,7 @@ const ChatPage = () => {
                 </ul>
             </div>
 
-            {/* MAIN CHAT AREA: Using ChatBox for message display */}
+            {/* MAIN CHAT AREA */}
             <div className="chatpage-main">
                 {selectedConversation ? (
                     <ChatBox
@@ -163,7 +191,6 @@ const ChatPage = () => {
                         newMessage={newMessage}
                         onNewMessageChange={(e) => setNewMessage(e.target.value)}
                         onSendMessage={handleSendMessage}
-                        // Here, we assume the ChatBox is always open in this layout.
                         isOpen={true}
                         toggleChat={() => { }}
                     />

@@ -1,6 +1,6 @@
 import React from 'react';
 import ProductRow from '../components/productRow';
-import RunningImage from '../images/guyRuning.png'; // Import the running image
+import RunningImage from '../images/guyRunning.png'; // Import the running image
 import Model from '../models/productModel';
 import './HomeScreen.css'; // Optional for styling
 
