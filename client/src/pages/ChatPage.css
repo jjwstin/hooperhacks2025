@@ -2,9 +2,8 @@
 
 .chatpage-container {
     display: flex;
-    height: 100vh;
     /* Make it take up the full screen height */
-    margin: 0;
+    margin-top: 120px;
     padding: 0;
     font-family: Arial, sans-serif;
 }
