@@ -30,6 +30,11 @@ const ProductPage = () => {
         // Handle trade logic here
     };
 
+    const handleBuyNow = () => {
+        // Navigate to CheckOutPage and pass the product details as state
+        navigate('/checkout', { state: { productName, selectedSize, selectedSide } });
+    };
+
     const retailPrice = (product.price * 1.2).toFixed(2); // Calculate retail price
 
     return (
@@ -55,13 +60,12 @@ const ProductPage = () => {
                         <option value="right">Right</option>
                     </select>
                 </div>
-                <button className="buy-button">Add to Cart</button>
+                <button className="buy-button" onClick={handleBuyNow}>Buy Now</button>
                 <button className="trade-button" onClick={handleTrade}>Look for Trade</button>
                 <button className="contact-button" onClick={handleContactSeller}>Contact Sellers</button>
             </div>
 
             <section className="related-products">
-
                 <ProductRow title="Related Products" products={relatedProducts} />
             </section>
             

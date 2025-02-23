@@ -5,6 +5,7 @@ import Login from './pages/Login';
 import HomeScreen from './pages/HomeScreen';
 import ChatPage from './pages/ChatPage';
 import ProductPage from './pages/ProductPage';
+import CheckOutPage from './pages/CheckOutPage'; // Import the CheckOutPage component
 import NavBar from './components/navBar';
 
 const AppContent = () => {
@@ -20,6 +21,7 @@ const AppContent = () => {
         <Route path="/home" element={<HomeScreen />} />
         <Route path="/chat" element={<ChatPage />} />
         <Route path="/product/:productName" element={<ProductPage />} />
+        <Route path="/checkout" element={<CheckOutPage />} /> {/* Define the route for CheckOutPage */}
       </Routes>
     </>
   );

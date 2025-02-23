@@ -1,0 +1,85 @@
+.checkout-page {
+    padding: 150px 0 40px 0; 
+    font-family: Arial, sans-serif;
+    background-color: black;
+    color: white;
+    height: 125%;
+}
+
+.back-button {
+    background-color: grey;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+    border-radius: 5px;
+    margin-bottom: 20px;
+}
+
+.back-button:hover {
+    background-color: darkgrey;
+}
+
+.checkout-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+}
+
+.checkout-page h1 {
+    font-family: Arial, sans-serif;
+    font-size: 2rem;
+    margin-bottom: 10px;
+}
+.product-summary {
+    width: 40%;
+    text-align: center;
+}
+
+.product-image {
+    max-width: 100%;
+    height: auto;
+    border-radius: 10px;
+    margin-bottom: 20px;
+    padding: 0 10%;
+}
+
+.checkout-form {
+    width: 50%;
+    background-color: grey;
+}
+
+.dropdowns {
+    margin-bottom: 20px;
+}
+
+.dropdowns select {
+    margin-right: 10px;
+    padding: 5px;
+    font-size: 1rem;
+}
+
+.shipping-options,
+.delivery-method {
+    margin-bottom: 20px;
+}
+
+.shipping-options label,
+.delivery-method label {
+    display: block;
+    margin-bottom: 10px;
+}
+
+.next-button {
+    background-color: blue;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+    border-radius: 5px;
+    margin-top: 20px;
+}
+
+.next-button:hover {
+    background-color: darkblue;
+}
