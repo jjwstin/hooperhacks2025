@@ -1,13 +1,20 @@
+// src/App.jsx
 import React from 'react';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import Header from './components/header';
 import HomeScreen from './pages/HomeScreen';
-import './App.css'; // Global styles
+import ChatPage from './pages/ChatPage';
 
-const App = () => {
+function App() {
   return (
-    <div className="App">
-      <HomeScreen />
-    </div>
+    <Router>
+      <Header />
+      <Routes>
+        <Route path="/" element={<HomeScreen />} />
+        <Route path="/chat" element={<ChatPage />} />
+      </Routes>
+    </Router>
   );
-};
+}
 
 export default App;
