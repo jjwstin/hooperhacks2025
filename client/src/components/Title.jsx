@@ -1,12 +1,12 @@
 import React from 'react'
-import TitleIMG from '../images/title.png'
 import './Title.css';
+import Slideshow from './slideshow';
 
 const Title = () => {
   return (
     <div className="title">
-        <h1> Pair to Spare </h1>
-        <img src={TitleIMG} alt="title" />
+        <h1> Pair 2 Spare </h1>
+        <Slideshow />
     </div>
   )
 }
