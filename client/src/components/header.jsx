@@ -1,8 +1,16 @@
 import React from 'react';
-import '../srcStylesheets/header.css'; // Create a separate CSS file if needed
-import talkIcon from '../images/talkIcon.png'; // Import the talk icon image
+import '../srcStylesheets/header.css';
+import talkIcon from '../images/talkIcon.png';
+import { useNavigate } from 'react-router-dom';
 
 const Header = () => {
+    const navigate = useNavigate();
+
+    // Toggle the chat box visibility
+    const handleChatClick = () => {
+        navigate('/chat');
+    };
+
     return (
         <header className="home-header">
             <div className="logo">Pair 2 Spare</div>
@@ -14,8 +22,17 @@ const Header = () => {
                 <a href="/sell">Sell</a>
             </nav>
             <div className="header-right">
-                <img src={talkIcon} alt="Messaging" className="message-icon" />
-                <img src="/path/to/profile-icon.jpg" alt="Profile" className="profile-icon" />
+                <img
+                    src={talkIcon}
+                    alt="Messaging"
+                    className="message-icon"
+                    onClick={handleChatClick} // Toggle chat on click
+                />
+                <img
+                    src="/path/to/profile-icon.jpg"
+                    alt="Profile"
+                    className="profile-icon"
+                />
             </div>
         </header>
     );

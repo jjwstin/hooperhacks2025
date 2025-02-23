@@ -6,7 +6,6 @@ import NavBar from '../components/navBar'; // Import the NavBar component
 const HomeScreen = () => {
     return (
         <div className="home-screen">
-            <Header /> {/* Render the header.jsx component */}
             <NavBar /> {/* Render the navBar.jsx component */}
 
             <main className="home-main">
